@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Set the port for the feed microservice
-EXPOSE 8080
+EXPOSE 8081
 
 # Run server 
 CMD [ "npm", "run", "dev" ]

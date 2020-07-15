@@ -1,5 +1,5 @@
 # Set the base image
-FROM node:12
+FROM beevelop/ionic AS ionic
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -13,8 +13,8 @@ RUN npm ci
 # Copy sources
 COPY . .
 
-# Set the port for the feed microservice
-EXPOSE 8080
+# build ionic
+RUN ionic build
 
-# Run server 
-CMD [ "npm", "run", "dev" ]
+FROM nginx:alpine
+COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
