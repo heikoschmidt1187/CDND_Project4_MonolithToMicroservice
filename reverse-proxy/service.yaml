@@ -5,6 +5,7 @@ metadata:
     service: udagram-reverse-proxy
   name: udagram-reverse-proxy
 spec:
+  type: LoadBalancer
   ports:
   - name: "80"
     port: 80
